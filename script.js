@@ -1,4 +1,4 @@
-$(function() {
+$(document).ready(function() {
   $("ul.nav li").on("click", function(event){
     $("ul.nav li").removeClass("active");
     $(this).addClass("active");
@@ -15,9 +15,6 @@ $(function() {
     $("body").attr("data-offset", windowHeight);
   }
 
-});
-
-$(document).ready(function() {
   initialize_maps('#adressen')
 });
 
