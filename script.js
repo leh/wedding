@@ -14,4 +14,41 @@ $(function() {
     $("section").css("min-height", windowHeight + 100 + "px");
     $("body").attr("data-offset", windowHeight);
   }
+
 });
+
+$(document).ready(function() {
+  initialize_maps('#adressen')
+});
+
+function initialize_maps(target) {
+  var mapOptions = {
+    center: new google.maps.LatLng(-34.397, 150.644),
+    zoom: 8,
+    mapTypeId: google.maps.MapTypeId.ROADMAP
+  };
+  var map = new google.maps.Map($(target).find('.gmaps').get(0), mapOptions);
+  var bounds = new google.maps.LatLngBounds();
+
+  $(target).find('span[data-location]').each(function(index, el) {
+    var element = $(el);
+    var name = element.text();
+    var location = element.data('location').split(',');
+    var myLatlng = new google.maps.LatLng(parseFloat(location[1]), parseFloat(location[0]));
+    bounds.extend(myLatlng);
+
+    var marker = new google.maps.Marker({
+      position: myLatlng,
+      title: name
+    });
+    marker.setMap(map);
+
+    element.html('<a>' + name + '</a>');
+    element.click(function(ev) {
+      marker.setAnimation(google.maps.Animation.BOUNCE)
+      setTimeout(function() { marker.setAnimation(null); }, 3000);
+    })
+  });
+
+  map.fitBounds(bounds);
+}

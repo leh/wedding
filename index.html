@@ -9,10 +9,9 @@
   <meta name="viewport" content="width=device-width">
   <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
   <link href="wedding.css" rel="stylesheet">
-  <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js" type="text/javascript"></script>
-  <!--script src="//maps.googleapis.com/maps/api/js?key=AIzaSyCi9Fw6e7izoLHrzPn_z6OgAMPGKqzCnYQ&sensor=false" type="text/javascript"></script-->
-  <script src="//maps.googleapis.com/maps/api/js?sensor=false" type="text/javascript"></script>
+  <script src="//maps.googleapis.com/maps/api/js?key=AIzaSyCi9Fw6e7izoLHrzPn_z6OgAMPGKqzCnYQ&sensor=false" type="text/javascript"></script>
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js" type="text/javascript"></script>
+  <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js" type="text/javascript"></script>
   <script src="script.js" type="text/javascript"></script>
 </head>
 
@@ -70,19 +69,11 @@
     <div class="row"><div class="span8 offset2">
       <section id="adressen">
         <h1>Adressen</h1>
-        <p>Das <span data-maps-location="">Standesamt Bonn</span> ist in der Poppelsdorfer Allee 24, 53103 Bonn. Parkm&ouml;glichkeiten gibt es im <span>DB Parkhaus</span> <a href="http://www.dbbahnpark.de/content/fahrplanauskunft/bahnpark/pdf/8000044.pdf" target="_blank"> <i class="icon-share icon-red"></i> </a> direkt am Bahnhof oder mit etwas Glück in der <span>Poppelsdorfer Allee.</span> </p>
-        <p>Die <span>Lutherkirche</span><a href="http://www.lutherkirche-bonn.de/" target="_blank"> <i class="icon-share icon-red"></i> </a> ist in der Reuterstra&szlig;e 11, 53115 Bonn. Mit dem Auto kommt man am besten &uuml;ber die Zufahrt <span>Kurf&uuml;rstenstra&szlig;e 20</span>. Hier gibt es auch hinter der Kirche eigene Parkpl&auml;tze der Kirchengemeinde. Ansonsten kann man sein Gl&uuml;ck gegen&uuml;ber im <span>Jagdweg</span> probieren.</p>
-        <p>Die Adresse vom <span>Brauhaus am Ennert</span> <a href="http://www.wir-brauen-bier.de/" target="_blank"> <i class="icon-share icon-red"></i> </a> lautet An den Hecken 1, 53229 Bonn. Allerdings haben wohl ein paar Navigationsger&auml;te Probleme, diese Adresse zu finden. Zur Sicherheit kann man Am Ennertbad 13-15 eingeben, das direkt um die Ecke ist.</p>
+        <p>Das <span data-location="7.098380,50.730721">Standesamt Bonn</span> ist in der Poppelsdorfer Allee 24, 53103 Bonn. Parkm&ouml;glichkeiten gibt es im <span data-location="7.096280,50.731667">DB Parkhaus</span> <a href="http://www.dbbahnpark.de/content/fahrplanauskunft/bahnpark/pdf/8000044.pdf" target="_blank"> <i class="icon-share icon-red"></i> </a> direkt am Bahnhof oder mit etwas Glück in der <span>Poppelsdorfer Allee.</span> </p>
+        <p>Die <span data-location="7.095900,50.723080">Lutherkirche</span><a href="http://www.lutherkirche-bonn.de/" target="_blank"> <i class="icon-share icon-red"></i> </a> ist in der Reuterstra&szlig;e 11, 53115 Bonn. Mit dem Auto kommt man am besten &uuml;ber die Zufahrt Kurf&uuml;rstenstra&szlig;e 20. Hier gibt es auch hinter der Kirche eigene Parkpl&auml;tze der Kirchengemeinde. Ansonsten kann man sein Gl&uuml;ck gegen&uuml;ber im Jagdweg probieren.</p>
+        <p>Die Adresse vom <span data-location="7.150020,50.735378">Brauhaus am Ennert</span> <a href="http://www.wir-brauen-bier.de/" target="_blank"> <i class="icon-share icon-red"></i> </a> lautet An den Hecken 1, 53229 Bonn. Allerdings haben wohl ein paar Navigationsger&auml;te Probleme, diese Adresse zu finden. Zur Sicherheit kann man Am Ennertbad 13-15 eingeben, das direkt um die Ecke ist.</p>
 
         <div class="row"><div id="adressen_canvas" class="gmaps span8"></div></div>
-      <script type="text/javascript">
-          var mapOptions = {
-            center: new google.maps.LatLng(-34.397, 150.644),
-            zoom: 8,
-            mapTypeId: google.maps.MapTypeId.ROADMAP
-          };
-          var map = new google.maps.Map(document.getElementById("adressen_canvas"), mapOptions);
-      </script>
       </section>
     </div></div>
     <div class="row"><div class="span8 offset2">
