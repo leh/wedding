@@ -24,7 +24,8 @@ function initialize_maps(target) {
     zoom: 8,
     mapTypeId: google.maps.MapTypeId.ROADMAP
   };
-  var map = new google.maps.Map($(target).find('.gmaps').get(0), mapOptions);
+  var mapEl = $(target).find('.gmaps');
+  var map = new google.maps.Map(mapEl.get(0), mapOptions);
   var bounds = new google.maps.LatLngBounds();
 
   $(target).find('span[data-location]').each(function(index, el) {
@@ -42,6 +43,10 @@ function initialize_maps(target) {
 
     element.html('<a>' + name + '</a>');
     element.click(function(ev) {
+      mapEl.focus();
+      $('html, body').animate({
+        scrollTop: (mapEl.offset().top - 100)
+      }, 500);
       marker.setAnimation(google.maps.Animation.BOUNCE)
       setTimeout(function() { marker.setAnimation(null); }, 3000);
     })
