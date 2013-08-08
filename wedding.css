@@ -54,6 +54,12 @@ h1 {
 
 }
 
+#home h1 {
+	text-align: center;
+	border-bottom: none;
+	margin-bottom: 0.5em;
+}
+
 .pull-center {
   text-align: center;
 }
