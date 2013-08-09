@@ -26,7 +26,20 @@ function load_and_initialize_maps() {
   document.body.appendChild(script);
 }
 
+var pinColor = "a00100";
+var pinImage = null;
+var pinShadow = null;
+
 function initialize_maps() {
+  pinImage = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|" + pinColor,
+      new google.maps.Size(21, 34),
+      new google.maps.Point(0,0),
+      new google.maps.Point(10, 34));
+  pinShadow = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_shadow",
+      new google.maps.Size(40, 37),
+      new google.maps.Point(0, 0),
+      new google.maps.Point(12, 35));
+
   initialize_address_maps();
   initialize_hotels_maps();
 }
@@ -55,6 +68,7 @@ function initialize_hotels_maps() {
   var target = '#hotels';
   var addressen_target = '#adressen';
 
+
   var mapEl = $(target).find('.gmaps');
   var map = new google.maps.Map(mapEl.get(0), map_options());
   var bounds = new google.maps.LatLngBounds();
@@ -65,7 +79,10 @@ function initialize_hotels_maps() {
     var myLatlng = latlng_from_el(element);
     bounds.extend(myLatlng);
 
-    var marker = create_marker(myLatlng, name)
+    var marker = new google.maps.Marker({
+      position: myLatlng,
+      title: name,
+    });
     marker.setMap(map);
 
     init_click_handler(mapEl, marker, element, name);
@@ -77,7 +94,7 @@ function initialize_hotels_maps() {
     var myLatlng = latlng_from_el(element);
     bounds.extend(myLatlng);
 
-   var marker = create_marker(myLatlng, name)
+    var marker = create_marker(myLatlng, name)
     marker.setMap(map);
   });
 
@@ -100,7 +117,9 @@ function latlng_from_el(el) {
 function create_marker(latlng, name) {
   return new google.maps.Marker({
     position: latlng,
-    title: name
+    title: name,
+    icon: pinImage,
+    shadow: pinShadow
   });
 }
 
