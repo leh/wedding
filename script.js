@@ -15,10 +15,18 @@ $(document).ready(function() {
     $("body").attr("data-offset", windowHeight);
   }
 
-  initialize_maps('#adressen')
+  load_and_initialize_maps();
 });
 
-function initialize_maps(target) {
+function load_and_initialize_maps() {
+  var script = document.createElement("script");
+  script.type = "text/javascript";
+  script.src = "//maps.googleapis.com/maps/api/js?key=AIzaSyCi9Fw6e7izoLHrzPn_z6OgAMPGKqzCnYQ&sensor=false&callback=initialize_maps";
+  document.body.appendChild(script);
+}
+
+function initialize_maps() {
+  var target = '#adressen';
   var mapOptions = {
     center: new google.maps.LatLng(-34.397, 150.644),
     zoom: 8,
