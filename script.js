@@ -27,29 +27,84 @@ function load_and_initialize_maps() {
 }
 
 function initialize_maps() {
+  initialize_address_maps();
+  initialize_hotels_maps();
+}
+
+function initialize_address_maps() {
   var target = '#adressen';
-  var mapOptions = {
-    center: new google.maps.LatLng(-34.397, 150.644),
-    zoom: 8,
-    mapTypeId: google.maps.MapTypeId.ROADMAP
-  };
   var mapEl = $(target).find('.gmaps');
-  var map = new google.maps.Map(mapEl.get(0), mapOptions);
+  var map = new google.maps.Map(mapEl.get(0), map_options());
   var bounds = new google.maps.LatLngBounds();
 
   $(target).find('span[data-location]').each(function(index, el) {
     var element = $(el);
     var name = element.text();
-    var location = element.data('location').split(',');
-    var myLatlng = new google.maps.LatLng(parseFloat(location[1]), parseFloat(location[0]));
+    var myLatlng = latlng_from_el(element);
     bounds.extend(myLatlng);
 
-    var marker = new google.maps.Marker({
-      position: myLatlng,
-      title: name
-    });
+    var marker = create_marker(myLatlng, name)
+    marker.setMap(map);
+    init_click_handler(mapEl, marker, element, name);
+  });
+
+  map.fitBounds(bounds);
+}
+
+function initialize_hotels_maps() {
+  var target = '#hotels';
+  var addressen_target = '#adressen';
+
+  var mapEl = $(target).find('.gmaps');
+  var map = new google.maps.Map(mapEl.get(0), map_options());
+  var bounds = new google.maps.LatLngBounds();
+
+  $(target).find('span[data-location]').each(function(index, el) {
+    var element = $(el);
+    var name = element.text();
+    var myLatlng = latlng_from_el(element);
+    bounds.extend(myLatlng);
+
+    var marker = create_marker(myLatlng, name)
     marker.setMap(map);
 
+    init_click_handler(mapEl, marker, element, name);
+  });
+
+  $(addressen_target).find('span[data-location]').each(function(index, el) {
+    var element = $(el);
+    var name = element.text();
+    var myLatlng = latlng_from_el(element);
+    bounds.extend(myLatlng);
+
+   var marker = create_marker(myLatlng, name)
+    marker.setMap(map);
+  });
+
+  map.fitBounds(bounds);
+}
+
+function map_options() {
+  return {
+    center: new google.maps.LatLng(50.723080,7.095900),
+    zoom: 12,
+    mapTypeId: google.maps.MapTypeId.ROADMAP
+  };
+}
+
+function latlng_from_el(el) {
+  var location = el.data('location').split(',');
+  return new google.maps.LatLng(parseFloat(location[1]), parseFloat(location[0]));
+}
+
+function create_marker(latlng, name) {
+  return new google.maps.Marker({
+    position: latlng,
+    title: name
+  });
+}
+
+function init_click_handler(mapEl, marker, element, name) {
     element.html('<a>' + name + '</a>');
     element.click(function(ev) {
       mapEl.focus();
@@ -59,7 +114,4 @@ function initialize_maps() {
       marker.setAnimation(google.maps.Animation.BOUNCE)
       setTimeout(function() { marker.setAnimation(null); }, 3000);
     })
-  });
-
-  map.fitBounds(bounds);
 }
