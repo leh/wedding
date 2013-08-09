@@ -2,6 +2,7 @@ $(document).ready(function() {
   $("ul.nav li").on("click", function(event){
     $("ul.nav li").removeClass("active");
     $(this).addClass("active");
+    window.scrollBy(0,1); // http://stackoverflow.com/questions/11258877/fixed-element-disappears-in-chrome
   });
 
   // Remove the menu and min-height on smaller disp
