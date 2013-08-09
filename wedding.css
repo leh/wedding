@@ -19,6 +19,10 @@ div.gmaps {
   background-image: url("/glyphicons-halflings-red.png");
 }
 
+a.icon-red:hover {
+  text-decoration: none;
+}
+
 .adr {
   font-style: italic;
 }
