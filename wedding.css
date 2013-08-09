@@ -3,6 +3,26 @@ body {
   line-height: 1.5em;
 }
 
+div.gmaps {
+  height: 350px;
+}
+
+.gmaps img {
+  max-width: none;
+  }
+
+.gmaps label {
+  width: auto; display:inline;
+}
+
+.icon-red {
+  background-image: url("/glyphicons-halflings-red.png");
+}
+
+.adr {
+  font-style: italic;
+}
+
 section {
   padding-top: 90px;
   min-height: 2000px;
@@ -36,6 +56,12 @@ h1 {
   line-height: 0.9em;
   border-bottom: solid 1px #a00100;
 
+}
+
+#home h1 {
+	text-align: center;
+	border-bottom: none;
+	margin-bottom: 0.5em;
 }
 
 .pull-center {
