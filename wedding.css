@@ -19,7 +19,7 @@ div.gmaps {
   background-image: url("/glyphicons-halflings-red.png");
 }
 
-a.icon-red:hover {
+a.external:hover {
   text-decoration: none;
 }
 
